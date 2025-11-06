@@ -16,7 +16,7 @@ public class CepController {
     @Autowired
     private CepService cepService;
 
-    @PostMapping("/criar/")
+    @PostMapping("/criar")
     public ResponseEntity<EnderecoResponseDTO> criarEnderecoPeloCep(@RequestBody CriarEnderecoDTO dto){
         try {
             EnderecoResponseDTO enderecoResponseDTO = cepService.criarEndereco(dto);

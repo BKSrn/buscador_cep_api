@@ -3,7 +3,7 @@ package com.example.buscador_cep_api.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cep's")
+@Table(name = "enderecos")
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

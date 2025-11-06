@@ -31,7 +31,8 @@ public class CepService {
         String json = apiService.getJson(dto.cep());
         EnderecoDadosApi enderecoDados = converteJsonService.fromJson(json, EnderecoDadosApi.class);
 
-        Endereco endereco = cepRepository.save(new Endereco(enderecoDados.cep(), enderecoDados.bairro(), enderecoDados.localidade(), enderecoDados.logradouro()));
+        Endereco endereco = cepRepository.save(new Endereco(enderecoDados.logradouro(), enderecoDados.bairro(),
+                enderecoDados.localidade(), enderecoDados.cep()));
         return converterParaDto(endereco);
     }
 
