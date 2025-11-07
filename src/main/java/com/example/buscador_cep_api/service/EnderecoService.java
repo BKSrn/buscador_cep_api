@@ -5,15 +5,15 @@ import com.example.buscador_cep_api.dto.EnderecoDadosApi;
 import com.example.buscador_cep_api.dto.EnderecoResponseDTO;
 import com.example.buscador_cep_api.exception.CepTamanhoException;
 import com.example.buscador_cep_api.model.Endereco;
-import com.example.buscador_cep_api.repository.CepRepository;
+import com.example.buscador_cep_api.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CepService {
+public class EnderecoService {
 
     @Autowired
-    CepRepository cepRepository;
+    EnderecoRepository enderecoRepository;
 
     @Autowired
     ApiService apiService;
@@ -31,7 +31,7 @@ public class CepService {
         String json = apiService.getJson(dto.cep());
         EnderecoDadosApi enderecoDados = converteJsonService.fromJson(json, EnderecoDadosApi.class);
 
-        Endereco endereco = cepRepository.save(new Endereco(enderecoDados.logradouro(), enderecoDados.bairro(),
+        Endereco endereco = enderecoRepository.save(new Endereco(enderecoDados.logradouro(), enderecoDados.bairro(),
                 enderecoDados.localidade(), enderecoDados.cep()));
         return converterParaDto(endereco);
     }

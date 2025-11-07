@@ -65,11 +65,45 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+
+            <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-webapp-maven-plugin</artifactId>
+                <version>2.14.0</version>
+                <configuration>
+                    <schemaVersion>v2</schemaVersion>
+                    <resourceGroup>meu-grupo-recursos</resourceGroup>
+                    <appName>buscador-cep-api</appName>
+                    <pricingTier>F1</pricingTier>
+                    <region>brazilsouth</region>
+                    <runtime>
+                        <os>linux</os>
+                        <javaVersion>java21</javaVersion>
+                    </runtime>
+                    <appSettings>
+                        <property>
+                            <name>JAVA_OPTS</name>
+                            <value>-Dserver.port=80</value>
+                        </property>
+                    </appSettings>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 		</plugins>
 	</build>
 
